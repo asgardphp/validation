@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
  * Check that the input is equal or less than the given number.

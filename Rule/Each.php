@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
  * Check that each element of the iterable input validates the given validator.

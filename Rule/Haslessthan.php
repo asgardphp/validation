@@ -1,11 +1,11 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
- * Check that the input countains more than a given number.
+ * Check that the input contains less than a given number.
  * @author Michel Hognerud <michel@hognerud.com>
  */
-class Hasmorethan extends \Asgard\Validation\Rule {
+class Haslessthan extends \Asgard\Validation\Rule {
 	/**
 	 * Count.
 	 * @var integer
@@ -24,13 +24,13 @@ class Hasmorethan extends \Asgard\Validation\Rule {
 	 * {@inheritDoc}
 	 */
 	public function validate($input, \Asgard\Validation\InputBag $parentInput, \Asgard\Validation\ValidatorInterface $validator) {
-		return count($input) > $this->count;
+		return count($input) < $this->count;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function getMessage() {
-		return ':attribute must have more than :count elements.';
+		return ':attribute must have less than :count elements.';
 	}
 }

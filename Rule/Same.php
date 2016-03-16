@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
  * Check if the input is the same as another attribute.

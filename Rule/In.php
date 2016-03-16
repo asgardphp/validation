@@ -1,30 +1,30 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
- * Perform a callback validation.
+ * Check that the input is in a given array.
  * @author Michel Hognerud <michel@hognerud.com>
  */
-class Callback extends \Asgard\Validation\Rule {
+class In extends \Asgard\Validation\Rule {
 	/**
-	 * Callable.
-	 * @var callable
+	 * Haystack.
+	 * @var array
 	 */
-	public $cb;
+	public $in;
 
 	/**
 	 * Constructor.
-	 * @param callable $cb
+	 * @param array $in
 	 */
-	public function __construct($cb) {
-		$this->cb = $cb;
+	public function __construct($in) {
+		$this->in = $in;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function validate($input, \Asgard\Validation\InputBag $parentInput, \Asgard\Validation\ValidatorInterface $validator) {
-		return call_user_func_array($this->cb, [$input, $parentInput, $validator]);
+		return in_array($input, $this->in);
 	}
 
 	/**

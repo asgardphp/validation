@@ -1,29 +1,33 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
- * Return the opposite result of a validator.
+ * Check if any of the validator validates the input.
  * @author Michel Hognerud <michel@hognerud.com>
  */
-class Not extends \Asgard\Validation\Rule {
+class Any extends \Asgard\Validation\Rule {
 	/**
-	 * Validator.
+	 * Validators.
 	 * @var array
 	 */
-	public $validator;
+	public $validators;
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct($validator) {
-		$this->validator = $validator;
+	public function __construct() {
+		$this->validators = func_get_args();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function validate($input, \Asgard\Validation\InputBag $parentInput, \Asgard\Validation\ValidatorInterface $validator) {
-		return !$this->validator->valid($input);
+		foreach($this->validators as $name=>$_validator) {
+			if($_validator->valid($input) !== false)
+				return true;
+		}
+		return false;
 	}
 
 	/**

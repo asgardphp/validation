@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
  * Check that the string length is greater or equal to the given length.

@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
  * Check if the object is instance of a class.

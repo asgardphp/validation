@@ -1,34 +1,29 @@
 <?php
-namespace Asgard\Validation\Rules;
+namespace Asgard\Validation\Rule;
 
 /**
- * Check that the whole input is in a given array.
+ * Return the opposite result of a validator.
  * @author Michel Hognerud <michel@hognerud.com>
  */
-class Allin extends \Asgard\Validation\Rule {
+class Not extends \Asgard\Validation\Rule {
 	/**
-	 * Haystack.
+	 * Validator.
 	 * @var array
 	 */
-	public $in;
+	public $validator;
 
 	/**
-	 * Constructor.
-	 * @param array $in
+	 * {@inheritDoc}
 	 */
-	public function __construct($in) {
-		$this->in = $in;
+	public function __construct($validator) {
+		$this->validator = $validator;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function validate($input, \Asgard\Validation\InputBag $parentInput, \Asgard\Validation\ValidatorInterface $validator) {
-		foreach($input as $v) {
-			if(!in_array($v, $this->in))
-				return false;
-		}
-		return true;
+		return !$this->validator->valid($input);
 	}
 
 	/**
